@@ -1,38 +1,33 @@
-# create-svelte
+# TNEvent Widgets
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).
+OBS Studio / Streamlabs widgets for the caricative event, TNEvent, organized by TELECOM Nancy.
 
-## Creating a project
+## How does it look?
 
-If you're seeing this, you've probably already done this step. Congrats!
+![Screenshot of the current widgets](./docs/2024-10-06-state.png)
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+## Build
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
+These widgets are built with Svelte 5 (Preview version). The only thing you need to run this project is `npm` (or similar, like `pnpm`).
 
-## Developing
+**Install the deps**:
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+``npm install``
 
-```bash
-npm run dev
+or 
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+``pnpm install``
 
-## Building
+**Run the app (for development):**
 
-To create a production version of your app:
+``npm run dev``
 
-```bash
-npm run build
-```
+or 
 
-You can preview the production build with `npm run preview`.
+``pnpm dev``
 
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+**Enjoy!**
+
+## License
+
+This project is NOT under any license. Thus, you cannot reuse this project for your personal uses (nor commercial ones). Per GitHub TOS, your only right is to fork this repository on your GitHub account.

@@ -19,7 +19,7 @@
 </script>
 
 <div class="flex flex-col items-start">
-	<p class="font-bold text-3xl mx-2 text-purple-950 uppercase">{title}</p>
+	<p class="font-bold text-3xl text-purple-500 uppercase">{title}</p>
 	<div class="bg-purple-200 pt-4 pb-2 px-8 rounded-xl">
 		<div class="text-4xl font-black text-purple-800 overflow-clip inline-flex items-baseline">
 			{#each eur.split('') as digit}
