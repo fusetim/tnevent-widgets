@@ -65,7 +65,6 @@
 			goals.push(goal - i);
 			i++;
 		}
-		console.log(goals);
 		return goals;
 	}
 </script>
