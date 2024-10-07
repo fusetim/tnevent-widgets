@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Icon from '@iconify/svelte';
 	import type { DonationGoal, DonationGoalRotator } from './donation_goals';
-	import { eurFormatBigInt } from '$lib/util';
+	import { eurFormatBigInt, eurNoCentsFormatBigInt } from '$lib/util';
 	import { fade, slide } from 'svelte/transition';
 
 	let props: DonationGoalRotator = $props();
@@ -69,49 +69,79 @@
 	}
 </script>
 
-<div class="mt-8 p-4 border-2 border-purple-500 rounded-xl flex flex-col justify-stretch">
-	<h2 class="text-xl font-bold text-purple-500 uppercase">Donation goals</h2>
+<div class="mt-8 p-4 border-2 border-cyan-500 rounded-xl flex flex-col justify-stretch">
+	<h2 class="text-xl font-bold text-cyan-500 uppercase">Donation goals</h2>
 	<div class="relative gap-2 bg-slate-800 rounded-2xl mb-2">
-		<div class="absolute left-0 ml-4 text-purple-50">
+		<div class="absolute left-0 ml-4 text-cyan-50">
 			<p class="font-bold">{eurFormatBigInt(props.value)} / {eurFormatBigInt(getGoalValue())}</p>
 		</div>
 		<div style="width: {getPosition()}%">
-			<div class="bg-purple-500 h-6 rounded-2xl"></div>
+			<div class="bg-cyan-500 h-6 rounded-2xl"></div>
 		</div>
 	</div>
 
 	<div class="flex flex-col gap-y-2 text-sm">
 		{#each props.goals as goal, index}
 			{#if getShownGoals().includes(index)}
-				<div
+				<div class="relative pb-1"
 					transition:slide={{ delay: 300, duration: 700 }}
-					class:bg-slate-800={index >= currentGoal}
-					class:bg-emerald-800={index < currentGoal}
-					class="p-2 rounded-xl text-slate-100 flex flex-row justify-between items-center transition-colors"
 				>
-					<p
-						class="font-bold transition-colors mr-4"
-						class:text-emerald-200={index < currentGoal}
-						class:text-purple-400={index >= currentGoal}
+					<div class="h-4 w-4 rounded-full absolute top-1 left-4 mt-0.5"
+						class:bg-cyan-400={index >= currentGoal}
+						class:bg-lime-400={index < currentGoal}
+					></div>
+					<div class="px-2 py-1 absolute left-2 top-2 -rotate-12 rounded-lg font-semibold text-sm"
+						class:bg-cyan-400={index >= currentGoal}
+						class:bg-lime-400={index < currentGoal}
 					>
-						{eurFormatBigInt(goal.goal)}
-					</p>
-					<p class="font-semibold">{goal.title}</p>
-					{#if index < currentGoal}
-						<Icon icon="material-symbols:kid-star" class="text-emerald-200 h-6 w-6 ml-4" />
-					{:else}
-						<Icon
-							icon={index % 2 ? 'ph:sparkle-fill' : 'fluent:sparkle-28-filled'}
-							class="text-yellow-400 h-6 w-6 ml-4"
-						/>
-					{/if}
+						<p>{eurNoCentsFormatBigInt(goal.goal)}</p>
+					</div>
+					<div class="flex flex-row px-4 py-2 transition-shadow rounded-lg bg-slate-800 text-xs font-semibold uppercase text-slate-50 items-center"
+						class:achieved-glow={index < currentGoal}>
+						<p class="mx-3 invisible">{eurNoCentsFormatBigInt(goal.goal)}</p>
+						{#if index == currentGoal}
+						<div transition:slide={{duration:250, axis: 'x'}} class="inline-flex mt-0.5">
+						<div class="animated-color"><Icon icon="weui:arrow-filled" class="-ml-2 mr-1 w-4 h-4"></Icon></div>
+						<div class="animated-color2"><Icon icon="weui:arrow-filled" class="-ml-2 mr-1 w-4 h-4"></Icon></div>
+						</div>
+						{/if}
+						<p>{goal.title}</p>
+					</div>
 				</div>
 			{/if}
 		{/each}
+		
 		{#if currentGoal + shownGoals < props.goals.length}
-			<div class="text-purple-400">
+			<div class="text-cyan-400">
 				<p class="font-semibold text-xs">et plus encore...</p>
 			</div>
 		{/if}
 	</div>
 </div>
+
+<style>
+	@keyframes anim1 {
+		from {
+			color: violet;
+		}
+		50% {
+			color: hsl(189, 100%, 83%);
+		}
+		to {
+			color: violet;
+		}
+	}
+
+	.animated-color {
+		animation: 2s anim1 infinite;
+	}
+
+	.animated-color2 {
+		animation: 2s anim1 infinite;
+		animation-delay: 1s;
+	}
+
+	.achieved-glow {
+		box-shadow: 0px 0px 4px 2px rgba(216, 255, 45, 0.65);
+	}
+</style>
