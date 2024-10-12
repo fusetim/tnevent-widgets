@@ -71,7 +71,7 @@
 
 <div class="mt-8 p-4 border-2 border-cyan-500 rounded-xl flex flex-col justify-stretch">
 	<h2 class="text-xl font-bold text-cyan-500 uppercase">Donation goals</h2>
-	<div class="relative gap-2 bg-slate-800 rounded-2xl mb-2">
+	<div class="relative gap-2 bg-slate-800 rounded-2xl mb-2 overflow-clip">
 		<div class="absolute left-0 ml-4 text-cyan-50">
 			<p class="font-bold">{eurFormatBigInt(props.value)} / {eurFormatBigInt(getGoalValue())}</p>
 		</div>
