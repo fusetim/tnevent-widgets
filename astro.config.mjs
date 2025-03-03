@@ -7,5 +7,6 @@ import solidJs from '@astrojs/solid-js';
 export default defineConfig({
   site: "https://fusetim.github.io",
   base: "/tnevent-widgets",
-  integrations: [solidJs()]
+  integrations: [solidJs()],
+  lang: "fr",
 });

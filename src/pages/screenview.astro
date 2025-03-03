@@ -1,0 +1,41 @@
+---
+import Layout from '../layouts/Layout.astro'
+import '../styles/screenview.scss'
+---
+
+<Layout>
+<main>
+    <div id="counter">  
+        <h1>Counter</h1>
+        <p>34101 €</p>
+    </div>
+</main>
+</Layout>
+
+<script>
+    // Drag and move counter
+    const counter = document.getElementById('counter');
+    if (!counter) {
+        throw new Error('Counter element not found');
+    }
+
+    let isDragging = false;
+
+    counter.addEventListener('mousedown', (event) => {
+        isDragging = true;
+        const offsetX = event.clientX - counter.getBoundingClientRect().left;
+        const offsetY = event.clientY - counter.getBoundingClientRect().top;
+
+        document.addEventListener('mousemove', (event) => {
+            if (isDragging) {
+                counter.style.left = `${event.clientX - offsetX}px`;
+                counter.style.top = `${event.clientY - offsetY}px`;
+            }
+        });
+
+        document.addEventListener('mouseup', () => {
+            isDragging = false;
+        });
+    });
+
+</script>

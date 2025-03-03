@@ -1,0 +1,40 @@
+@use './normalize';
+
+body {
+    background-color: rgb(0, 126, 176);
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+}
+
+main {
+    margin: 0.5em;
+    background-color: white;
+    border-radius: 0.5em;
+    flex: 1;
+
+    position: relative;
+}
+
+#counter {
+    position: absolute;
+
+    padding: 0.5em;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border-radius: 0.5em;
+
+    /* Drag and move */
+    cursor: grab;
+    user-select: none;
+}
+
+#counter:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+#counter:active {
+    cursor: grabbing;
+}
