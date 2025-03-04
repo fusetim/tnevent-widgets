@@ -8,6 +8,8 @@ node_modules/
 dist/
 build/
 out/
+.output
+.vinxi
 
 /* Logs */
 logs/
