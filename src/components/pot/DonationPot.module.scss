@@ -1,0 +1,104 @@
+.widget {
+    color: white;
+    //box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+    border-radius: 0.5rem;
+    padding: 2.5em 1em 1em ;
+
+    position: relative;
+} 
+
+.label {
+    position: absolute;
+    top: 1em;
+    left: 0;
+    margin: 0em 1.5em;
+
+    background-color: #fc466b;
+    width: fit-content;
+    border-radius: 9999px;
+    padding: 0.2em 0.75em;
+
+    animation: oscillate 10s infinite ease-in-out;
+}
+
+.content {
+    /* Background radial gradient, actually only two tone, starting left*/
+    background: radial-gradient(circle at 0% 50%, rgba(109,56,157,1) 45%, rgba(97,50,145,1) 45%);
+    border-radius: 99999px;
+    padding: 0.75em 1.5em;
+}
+
+.title {
+    font-size: 0.75em;
+    font-weight: 800;
+    margin: 0;
+    padding: 0;
+    text-transform: uppercase;
+}
+
+.amount {
+    font-size: 1.75em;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+
+    display: flex;
+    flex-direction: row;
+}
+
+.digit {
+    // On digit change, animate a fading with a light sliding up motion
+    animation: digitFade 0.5s ease-in-out;
+}
+
+
+@keyframes oscillate {
+    0% {
+        transform: translateY(0);
+    }
+    10% {
+        transform: translateY(-10%);
+    }
+    20% {
+        transform: translateY(0%);
+    }
+    30% {
+        transform: translateY(-10%);
+    }
+    47% {
+        transform: translateY(20%);
+        scale: 1;
+    }
+    50% {
+        scale: 1.1;
+    }
+    53% {
+        transform: translateY(20%);
+        scale: 1;
+    }
+    70% {
+        transform: translateY(-10%);
+    }
+    80% {
+        transform: translateY(0%);
+    }
+    90% {
+        transform: translateY(-10%);
+    }
+}
+
+@keyframes digitFade {
+    0% {
+        opacity: 0;
+        transform: translateY(10%)
+    }
+    80% {
+        opacity: 1;
+        transform: translateY(-5%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0%);
+    }
+}

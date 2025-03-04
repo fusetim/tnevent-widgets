@@ -1,15 +1,7 @@
-import { children, createSignal } from "solid-js";
+import { children, createSignal, onMount } from "solid-js";
 import styles from "../styles/screenview.module.scss";
 
-function DonationPot() {
-    let [count, setCount] = createSignal(0);
-    return (
-        <div>
-            <p>{count()}</p>
-            <button onClick={() => setCount(count() + 1)}>Increment</button>
-        </div>
-    );
-}
+import { DonationPot } from "../components/pot/DonationPot";
 
 function DragMoveAndSnap(props) {
     // Snap is not implemented yet, for future use
@@ -22,9 +14,10 @@ function DragMoveAndSnap(props) {
 
     function handleMouseDown(event: MouseEvent) {
         setIsDragging(true);
-        const offsetX = event.clientX - divEl.getBoundingClientRect().left;
-        const offsetY = event.clientY - divEl.getBoundingClientRect().top;
-        
+        const compStyle = window.getComputedStyle(divEl);
+        const offsetX = event.clientX - Number(compStyle.getPropertyValue("left").replace("px", ""));
+        const offsetY = event.clientY - Number(compStyle.getPropertyValue("top").replace("px", ""));
+
         const handleMouseUp = () => {
             setIsDragging(false);
             document.removeEventListener("mouseup", handleMouseUp);
@@ -42,22 +35,40 @@ function DragMoveAndSnap(props) {
         document.addEventListener("mousemove", handleMouseMove);
     }
 
+    onMount(() => {
+        divEl.style.left = "0px";
+        divEl.style.top = "0px";
+    });
+
     return (
         <div
-            ref={divEl} 
+            ref={divEl}
             onMouseDown={handleMouseDown}
-            style={{ position: "relative" }}>
+            class={styles.dragContainer}
+        >
             {safeChildren}
         </div>
     )
 }
 
 export default function Screenview() {
+    /* Increment the timer by a random number between 200 and 1 each 10s */
+    let [amount, setAmount] = createSignal(9876.54);
+
+    onMount(() => {
+        setInterval(() => {
+            setAmount(amount() + Math.random() * 200 + 1);
+        }, 3000);
+    })
+
     return (
         <main class={styles.main}>
             <div class={styles.container}>
                 <DragMoveAndSnap>
-                    <DonationPot />
+                    <DonationPot amount={amount()} />
+                </DragMoveAndSnap>
+                <DragMoveAndSnap>
+                    <DonationPot amount={amount() / 4} title="Cagnotte Équipe" />
                 </DragMoveAndSnap>
             </div>
         </main>

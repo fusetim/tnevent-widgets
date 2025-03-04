@@ -12,9 +12,41 @@
 }
 
 .container {
+    display: inline-block;
     background-color: white;
     flex: 1;
 
     border-radius: 0.5rem;
     padding: 0.25em;
+
+    /*Size coefficient*/
+    font-size: 24px;
+    position: relative;
+}
+
+.dragContainer {
+    width: fit-content;
+    height: fit-content;
+    position: absolute;
+
+    cursor: grab;
+    border-width: 2px;
+    border-style: solid;
+    border-color: transparent;
+    border-radius: 0.5em;
+
+    &:hover {
+        border-color: rgb(24, 190, 220);
+        background-color: rgba(24, 190, 220, 0.2);
+    }
+
+    &:active {
+        cursor: grabbing;
+        border-color: rgb(245, 55, 41);
+        background-color: rgba(245, 55, 41, 0.2);
+    }
+
+    h1, h2, h3, h4, h5, h6, p, a {
+        user-select: none;
+    }
 }
