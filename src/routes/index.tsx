@@ -1,7 +1,9 @@
+import { A } from "@solidjs/router";
+
 export default function Index() {
     return (
         <div>
-            <a href="/screenview">Go to Screenview</a>
+            <A href="/screenview">Go to Screenview</A>
         </div>
     );
 }
