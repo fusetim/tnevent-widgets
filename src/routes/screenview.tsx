@@ -2,10 +2,18 @@ import { children, createSignal, onMount } from "solid-js";
 import styles from "../styles/screenview.module.scss";
 
 import { DonationPot } from "../components/pot/DonationPot";
+import { Tchat } from "../components/tchat/Tchat";
 
-function DragMoveAndSnap(props) {
+interface DragMoveAndSnapProps {
+    children: any;
+    initialPosition?: { x: number, y: number };
+    snap?: { x: number, y: number };
+}
+
+function DragMoveAndSnap(props : DragMoveAndSnapProps) {
     // Snap is not implemented yet, for future use
     const safeChildren = children(() => props.children);
+    const initialPosition = props.initialPosition || { x: 0, y: 0 };
 
     let divEl!: HTMLDivElement;
 
@@ -36,8 +44,8 @@ function DragMoveAndSnap(props) {
     }
 
     onMount(() => {
-        divEl.style.left = "0px";
-        divEl.style.top = "0px";
+        divEl.style.left = initialPosition.x+"px";
+        divEl.style.top = initialPosition.y+"px";
     });
 
     return (
@@ -46,7 +54,7 @@ function DragMoveAndSnap(props) {
             onMouseDown={handleMouseDown}
             class={styles.dragContainer}
         >
-            {safeChildren}
+            {safeChildren()}
         </div>
     )
 }
@@ -67,8 +75,11 @@ export default function Screenview() {
                 <DragMoveAndSnap>
                     <DonationPot amount={amount()} />
                 </DragMoveAndSnap>
-                <DragMoveAndSnap>
+                <DragMoveAndSnap initialPosition={{ x: 0, y: 200 }}>
                     <DonationPot amount={amount() / 4} title="Cagnotte Équipe" />
+                </DragMoveAndSnap>
+                <DragMoveAndSnap initialPosition={{ x: 0, y: 400 }}>
+                    <Tchat></Tchat>
                 </DragMoveAndSnap>
             </div>
         </main>

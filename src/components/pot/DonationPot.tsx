@@ -1,5 +1,6 @@
 import { createEffect, createSignal, For } from "solid-js";
 import styles from "./DonationPot.module.scss";
+import { Label } from "../common/Label";
 
 interface DonationPotProps {
     amount: number;
@@ -18,9 +19,7 @@ export function DonationPot(props: DonationPotProps) {
     const amountFormatted = () => formatter()(amount());
     return (
         <div class={styles.widget}>
-            <div class={styles.label}>
-                <h1 class={styles.title}>{title}</h1>
-            </div>
+            <Label title={title()} animated={true} additionalClasses={[styles.label]}></Label>
             <div class={styles.content}>
                 <div class={styles.amount}>
                     <For each={[...amountFormatted()]}>

@@ -1,0 +1,54 @@
+.label {
+    background-color: #e33c5e;
+    color: #fff;
+    width: fit-content;
+    border-radius: 9999px;
+    padding: 0.2em 0.75em;
+}
+
+.label.animated {
+    animation: oscillate 10s infinite ease-in-out;
+}
+
+.title {
+    font-size: 0.75em;
+    font-weight: 800;
+    margin: 0;
+    padding: 0;
+    text-transform: uppercase;
+}
+
+@keyframes oscillate {
+    0% {
+        transform: translateY(0);
+    }
+    10% {
+        transform: translateY(-10%);
+    }
+    20% {
+        transform: translateY(0%);
+    }
+    30% {
+        transform: translateY(-10%);
+    }
+    47% {
+        transform: translateY(20%);
+        scale: 1;
+    }
+    50% {
+        scale: 1.1;
+    }
+    53% {
+        transform: translateY(20%);
+        scale: 1;
+    }
+    70% {
+        transform: translateY(-10%);
+    }
+    80% {
+        transform: translateY(0%);
+    }
+    90% {
+        transform: translateY(-10%);
+    }
+}
