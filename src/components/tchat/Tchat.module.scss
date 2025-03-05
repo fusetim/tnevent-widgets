@@ -13,6 +13,9 @@
 }
 
 .content {
+    display: flex;
+    flex-flow: column-reverse;
+
     margin-top: 0.25em;
     padding: 0.5em;
     border: 0.125em solid;
@@ -21,33 +24,33 @@
     border-color: rgb(97,50,145);
     background-color: rgba(97,50,145, 0.1);
 
-    :last-child {
-        margin-bottom: 0;
-    }
-
-    :first-child {
-        margin-top: 0;
-    }
+    overflow-y: hidden;
+    width: 16em;
+    height: 12em;
 }
 
 .message {
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    margin: 0.5em 0em;
-
-    max-width: 16em;
+    display: block;
+    margin: 0.25em 0em;
+    max-height: 0;
 
     border-radius: 0.5em;
     background-color: rgba(97, 70, 252, 0.2);
+    //min-height: 1.5em;
 
-    :last-child {
-        margin-bottom: 0.125em;
-    }
+    transform-origin: top;
+    animation: appearIn 0.5s ease-out forwards;
+}
+
+.message.seen {
+    animation: disappearOut 0.5s ease-in forwards;
+    overflow: hidden;
 }
 
 .author {
-    padding: 0.25em 0.5em;
+    float: left;
+    padding: 0.2em 0.5em 0em;
+    margin-right: 0.5em;
     border-radius: 0.5em;
     background-color: rgb(97,50,145);
     color: #fff;
@@ -55,15 +58,46 @@
     width: fit-content;
 
     .authorName {
+        margin: 0.2em 0;
         font-weight: 600;
         font-size: 0.75em;
     }
 }
 
 .text {
-    margin: 0.125em 0.4em;
+    margin: 0.2em 0.4em 0;
+    display: block;
+}
 
-    .messageText {
-        font-size: 0.75em;
+.messageText {
+    display: block;
+    font-size: 0.75em;
+    line-height: 1.7em;
+}
+
+/* Animation - Element appears by increasing its size from zero */
+@keyframes appearIn {
+    from {
+        opacity: 0;
+        max-height: 0;
+        transform: translateY(100%);
+    }
+    to {
+        max-height: 8em;
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Animation - Element disappears by decreasing its size to zero */
+@keyframes disappearOut {
+    from {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(-100%);
+        opacity: 0;
+        display: none;
     }
 }
