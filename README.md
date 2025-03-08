@@ -1,16 +1,15 @@
-# SolidStart
+# TNEvent Widgets
 
-Everything you need to build a Solid project, powered by [`solid-start`](https://start.solidjs.com);
+> A new set of widgets for the oncoming TNEvent charity event.
 
-## Creating a project
+# Goal
 
-```bash
-# create a new project in the current directory
-npm init solid@latest
+* Provide a complete set of widgets for the stream event.
+* Provide a way to use a single OBS Browser source to display all widgets (and update them in RT)
+* Have an easy way to position/enable/configure the different widgets.
+* Be reusable from one year to the other while still allowing a way to easily modify the theming of the various widgets.
 
-# create a new project in my-app
-npm init solid@latest my-app
-```
+> Live demo: https://fusetim.github.io/tnevent-widgets/
 
 ## Developing
 
@@ -29,4 +28,4 @@ Solid apps are built with _presets_, which optimise your project for deployment 
 
 By default, `npm run build` will generate a Node app that you can run with `npm start`. To use a different preset, add it to the `devDependencies` in `package.json` and specify in your `app.config.js`.
 
-## This project was created with the [Solid CLI](https://solid-cli.netlify.app)
+## This project was created with the [Solid CLI](https://solid-cli.netlify.app) & SolidStart
