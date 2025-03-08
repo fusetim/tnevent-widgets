@@ -1,0 +1,38 @@
+.widget {
+    color: #fff;
+    background-color: rgba(70, 27, 112, 0.9);
+
+    border-radius: 0.5rem;
+    padding: 0.75em;
+
+    display: block;
+}
+
+.title {
+    font-size: 0.75em;
+    margin: 0 auto 0.25em;
+    padding: 0;
+    width: fit-content;
+
+    text-transform: uppercase;
+    font-weight: 800;
+}
+
+.sponsor {
+    display: block;
+    text-align: center;
+    user-select: none;
+}
+
+.sponsorName {
+
+}
+
+.sponsorLogo {
+    display: block;
+    width: 10em;
+    height: 10em;
+    object-fit: cover;
+
+    border-radius: 0.5em;
+}

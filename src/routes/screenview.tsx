@@ -3,6 +3,7 @@ import styles from "../styles/screenview.module.scss";
 
 import { DonationPot } from "../components/pot/DonationPot";
 import { Tchat } from "../components/tchat/Tchat";
+import { EXAMPLE_SPONSORS, SponsorDisplay } from "~/components/sponsor/Sponsor";
 
 interface DragMoveAndSnapProps {
     children: any;
@@ -80,6 +81,9 @@ export default function Screenview() {
                 </DragMoveAndSnap>
                 <DragMoveAndSnap initialPosition={{ x: 0, y: 400 }}>
                     <Tchat></Tchat>
+                </DragMoveAndSnap>
+                <DragMoveAndSnap initialPosition={{ x: 400, y: 0 }}>
+                    <SponsorDisplay sponsors={EXAMPLE_SPONSORS}></SponsorDisplay>
                 </DragMoveAndSnap>
             </div>
         </main>
