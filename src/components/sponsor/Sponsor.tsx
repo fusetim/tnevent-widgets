@@ -22,9 +22,9 @@ function Sponsor(props: SponsorProps) {
         <div class={styles.sponsor}>
             <img
                 class={styles.sponsorLogo}
-                src={props.sponsor.logo.getMainSrc().src}
+                src={props.sponsor.logo.src[0].src}
                 alt={"Sponsor " + props.sponsor.name}
-                srcset={props.sponsor.logo.getSrcset().map(src => src.src + " " + src.mimeType).join(", ")} />
+                srcset={props.sponsor.logo.src.map(src => src.src + " " + src.mimeType).join(", ")} />
         </div>
     )
 }
@@ -48,22 +48,3 @@ export function SponsorDisplay(props: SponsorDisplayProps) {
         </div>
     );
 }
-
-export const EXAMPLE_SPONSORS: Sponsor[] = [
-    {
-        name: "Anim'Est",
-        logo: new ImageSrcset("/assets/sponsors/animest.ext", ["png"])
-    },
-    {
-        name: "GearX",
-        logo: new ImageSrcset("/assets/sponsors/gearX.ext", ["jpg"])
-    },
-    {
-        name: "Google",
-        logo: new ImageSrcset("/assets/sponsors/google.ext", ["jpg"])
-    },
-    {
-        name: "KubeX",
-        logo: new ImageSrcset("/assets/sponsors/kubeX.ext", ["jpg"])
-    },
-];

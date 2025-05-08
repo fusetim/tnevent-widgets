@@ -28,3 +28,8 @@ body {
     font-optical-sizing: auto;
     font-style: normal;
 }
+
+html {
+    --color-primary: rgb(109,56,157);
+    --color-primary-dark: hsl(271, 53%, 34%);
+}

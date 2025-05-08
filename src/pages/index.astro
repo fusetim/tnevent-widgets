@@ -5,8 +5,15 @@ import {
 	SponsorDisplay,
 	type Sponsor,
 } from "../components/sponsor/Sponsor.tsx";
-import { ImageSrcset } from "../lib/utils/ImageSrcset";
+import {
+	getMimeTypeFromExt,
+	ImageSrcset,
+	type ImageSrc,
+} from "../lib/utils/ImageSrcset";
 import { Tchat } from "../components/tchat/Tchat.tsx";
+
+import animestLogo from "../assets/images/partners/animest.png";
+import humanitnLogo from "../assets/images/partners/humanitn.webp";
 
 const title = "TNEvent Widgets";
 const description =
@@ -14,13 +21,161 @@ const description =
 const sponsors = [
 	{
 		name: "Anim'Est",
-		logo: new ImageSrcset("", ["ext"]),
+		logo: {
+			src: [
+				{
+					src: animestLogo.src,
+					mimeType: getMimeTypeFromExt(animestLogo.format),
+				} as ImageSrc,
+			],
+			alt: "Logo d'Anim'Est",
+		} as ImageSrcset,
+	},
+	{
+		name: "Humani'TN",
+		logo: {
+			src: [
+				{
+					src: humanitnLogo.src,
+					mimeType: getMimeTypeFromExt(humanitnLogo.format),
+				} as ImageSrc,
+			],
+			alt: "Logo de Humani'TN",
+		},
 	},
 ] as Sponsor[];
 ---
 
 <BasePage title={title} description={description}>
-	<DonationPot amount={100} client:load />
-	<SponsorDisplay sponsors={sponsors} client:load />
-	<Tchat client:load />
+	<div class="container">
+		<main>
+			<h1>TNEvent Widgets</h1>
+			<div class="desc">
+				<p>
+					TNEvent Widgets are a set of widgets for the live charity
+					event <a
+						href="https://telecomnancy.univ-lorraine.fr/2025/01/30/4e-edition-du-tnevent/"
+						target="_blank">TNEvent</a
+					>. They are built to be easily used and integrated in the
+					livestreams of the event.
+				</p>
+				<p>
+					The widgets are built with Astro and SolidJS, and are
+					designed to be easily integrated into livestreams (using OBS
+					websources).
+				</p>
+			</div>
+			<nav>
+				<li><a href="/tnevent-widgets/dashboard">Dashboard</a></li>
+			</nav>
+		</main>
+		<aside>
+			<h2 class="widget-gallery-title">Widget gallery</h2>
+			<div class="widgets">
+				<DonationPot amount={100} client:load />
+				<SponsorDisplay sponsors={sponsors} client:load />
+				<Tchat client:load />
+			</div>
+		</aside>
+	</div>
 </BasePage>
+
+<style>
+	.container {
+		display: block;
+		margin: 0 0;
+		padding: 4rem;
+
+		@media screen and (max-width: 768px) {
+			padding: 2rem 1rem;
+		}
+	}
+
+	main {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+
+		max-width: 900px;
+		margin: 0 auto 8rem;
+	}
+
+	h1 {
+		text-align: center;
+		font-size: 3rem;
+		margin-bottom: 1rem;
+	}
+
+	.desc {
+		max-width: 600px;
+		text-align: justify;
+
+		font-size: 1.2rem;
+		line-height: 1.5;
+		margin: 2rem 0;
+	}
+
+	nav {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+
+		list-style: none;
+		padding: 0;
+		margin: 0;
+
+		a {
+			text-decoration: none;
+			color: white;
+			border: 2px solid white;
+			outline: 2px solid transparent;
+			border-radius: 99999px;
+			padding: 0.5rem 1rem;
+			background-color: var(--color-primary);
+			font-size: 1.2rem;
+			font-weight: 600;
+			margin-bottom: 1rem;
+
+			transition:
+				background-color 0.1s,
+				outline-color 0.1s;
+
+			&:hover {
+				background-color: var(--color-primary-dark);
+				outline-color: var(--color-primary);
+			}
+		}
+	}
+
+	aside {
+		max-width: 900px;
+		margin: 4rem auto;
+		border: 2px dashed var(--color-primary);
+		border-radius: 2rem;
+		padding: 2rem;
+
+		@media screen and (max-width: 768px) {
+			margin: 2rem auto;
+			padding: 2rem 1rem;
+		}
+
+		.widget-gallery-title {
+			text-align: center;
+			font-size: 2rem;
+			margin-bottom: 2rem;
+		}
+
+		.widgets {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+
+			font-size: 1.2rem;
+
+			gap: 2rem;
+		}
+	}
+</style>
