@@ -1,5 +1,5 @@
 import { createEffect, createSignal, onMount } from "solid-js";
-import { ImageSrcset } from "~/lib/utils/ImageSrcset";
+import { ImageSrcset } from "../../lib/utils/ImageSrcset.ts";
 import styles from "./Sponsor.module.scss";
 import { Dynamic } from "solid-js/web";
 

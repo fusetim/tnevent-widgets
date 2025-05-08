@@ -1,27 +1,19 @@
 {
-  "name": "example-bare",
+  "name": "",
   "type": "module",
+  "version": "0.0.1",
   "scripts": {
-    "dev": "vinxi dev",
-    "build": "vinxi build",
-    "start": "vinxi start"
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
   },
   "dependencies": {
-    "@solidjs/router": "^0.15.3",
-    "@solidjs/start": "^1.1.0",
-    "solid-js": "^1.9.5",
-    "vinxi": "^0.5.3"
-  },
-  "engines": {
-    "node": ">=22"
-  },
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "@parcel/watcher",
-      "esbuild"
-    ]
+    "@astrojs/solid-js": "^5.0.10",
+    "astro": "^5.7.11",
+    "solid-js": "^1.9.6"
   },
   "devDependencies": {
-    "sass": "^1.85.1"
+    "sass-embedded": "^1.87.0"
   }
 }

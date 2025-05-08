@@ -6,6 +6,8 @@
     padding: 2.5em 1em 1em ;
 
     position: relative;
+
+    width: fit-content;
 } 
 
 .label {
@@ -35,6 +37,9 @@
 .digit {
     // On digit change, animate a fading with a light sliding up motion
     animation: digitFade 0.5s ease-in-out;
+    
+    // Disallow user select
+    user-select: none;
 }
 
 @keyframes digitFade {

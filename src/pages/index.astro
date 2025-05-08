@@ -1,0 +1,26 @@
+---
+import BasePage from "../layouts/BasePage.astro";
+import { DonationPot } from "../components/pot/DonationPot.tsx";
+import {
+	SponsorDisplay,
+	type Sponsor,
+} from "../components/sponsor/Sponsor.tsx";
+import { ImageSrcset } from "../lib/utils/ImageSrcset";
+import { Tchat } from "../components/tchat/Tchat.tsx";
+
+const title = "TNEvent Widgets";
+const description =
+	"TNEvent Widgets are a set of widgets for the live charity event TNEvent. They are built to be easily used and integrated in the livestreams of the event.";
+const sponsors = [
+	{
+		name: "Anim'Est",
+		logo: new ImageSrcset("", ["ext"]),
+	},
+] as Sponsor[];
+---
+
+<BasePage title={title} description={description}>
+	<DonationPot amount={100} client:load />
+	<SponsorDisplay sponsors={sponsors} client:load />
+	<Tchat client:load />
+</BasePage>

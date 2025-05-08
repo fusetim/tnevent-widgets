@@ -1,4 +1,4 @@
-import { createEffect, createSignal, For, JSX, onMount } from "solid-js";
+import { createEffect, createSignal, For, type JSX, onMount } from "solid-js";
 import { Label } from "../common/Label";
 import styles from "./Tchat.module.scss";
 
