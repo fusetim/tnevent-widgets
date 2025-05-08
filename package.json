@@ -15,5 +15,6 @@
   },
   "devDependencies": {
     "sass-embedded": "^1.87.0"
-  }
+  },
+  "packageManager": "pnpm@10.10.0"
 }
