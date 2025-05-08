@@ -1,9 +1,99 @@
 ---
+import { DonationPot } from "../components/pot/DonationPot";
 import BasePage from "../layouts/BasePage.astro";
 
 const title = "Dashboard - TNEvent Widgets";
 ---
 
 <BasePage title={title}>
-    <h1>Coming soon</h1>
+    <header class="dashboard-header container">
+        <h1>Dashboard</h1>
+        <p>Dashboard is there to help you create and manage the overlays.</p>
+    </header>
+    <section class="container" id="settings">
+        <h2>Settings</h2>
+        <div class="settings-group" id="settings-video">
+            <h3>Video</h3>
+        </div>
+        <div class="settings-group" id="settings-audio">
+            <h3>Audio</h3>
+        </div>
+        <div class="settings-group" id="settings-widgets">
+            <h3>Widgets</h3>
+        </div>
+    </section>
+    <section class="container" id="widgets">
+        <h2>Widgets</h2>
+        <table id="widgets-list">
+            <thead>
+                <tr>
+                    <th>Enable</th>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input type="checkbox" id="widget1-enable" /></td>
+                    <td>Widget 1</td>
+                    <td>Type A</td>
+                    <td>
+                        <button class="btn-edit">Edit</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+    <section id="editor">
+        <h2>Editor</h2>
+        <div id="editor-container">
+            <p>Editor will be here.</p>
+            <p>It will be a WYSIWYG editor for the widgets.</p>
+            <div class="widget-wrapper">
+                <DonationPot amount={1000}></DonationPot>
+            </div>
+        </div>
+    </section>
 </BasePage>
+<style>
+    .dashboard-header {
+        margin: 0 auto;
+        padding: 2rem 0;
+        text-align: center;
+    }
+
+    .dashboard-header h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .dashboard-header p {
+        font-size: 1.25rem;
+        color: var(--text-color);
+    }
+
+    #editor-container {
+        z-index: 50;
+        width: 100%;
+        height: 400px;
+        background-color: white;
+        border: 2px solid var(--color-primary);
+        display: block;
+        position: relative;
+    }
+
+    .widget-wrapper {
+        position: absolute;
+        z-index: 60;
+        top:4rem;
+        left: 4rem;
+        color: var(--text-color);
+
+        border: 2px solid transparent;
+
+        &:hover {
+            border: 2px solid var(--color-primary);
+        }
+    }
+</style>
