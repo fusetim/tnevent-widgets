@@ -1,0 +1,145 @@
+---
+import { DonationPot } from "../../components/pot/DonationPot";
+import BasePage from "../../layouts/BasePage.astro";
+import "./index.css";
+
+const title = "Dashboard - TNEvent Widgets";
+---
+
+<BasePage title={title}>
+    <header class="dashboard-header container">
+        <h1>Dashboard</h1>
+        <p>Dashboard is there to help you create and manage the overlays.</p>
+    </header>
+    <section class="container" id="settings">
+        <h2>Settings</h2>
+        <div class="settings-group" id="settings-video">
+            <h3 class="settings-title">Video</h3>
+            <table>
+                <tbody>
+                    <tr class="settings-row">
+                        <td class="settings-label">Source Resolution</td>
+                        <td class="settings-value">
+                            <div style="display: flex; gap: 0.25rem; align-items: stretch; justify-content: center;">
+                                <input type="number" id="video-width" value="1280"/>
+                                <p>x</p>
+                                <input type="number" id="video-height" value="720"/>
+                                <p>px</p>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="settings-group" id="settings-audio">
+            <h3 class="settings-title">Audio</h3>
+            <table>
+                <tbody>
+                    <tr class="settings-row">
+                        <td class="settings-label">Enable</td>
+                        <td class="settings-value">
+                            <input type="checkbox" id="audio-enable" />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="settings-group" id="settings-widgets">
+            <h3 class="settings-title">Widgets</h3>
+            <table>
+                <tbody>
+                    <tr class="settings-row">
+                        <td class="settings-label">Scaling factor (10-1000%)</td>
+                        <td class="settings-value">
+                            <div style="display: flex; gap: 0.25rem; align-items: stretch; flex-wrap: wrap; flex-direction: row;">
+                                <input type="number" id="widgets-scaling-factor" value="100" min="10" max="1000" step="5" style="flex:1;"/>
+                                <p>%</p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="settings-row">
+                        <td class="settings-label">Enable Animations</td>
+                        <td class="settings-value">
+                            <input type="checkbox" id="widgets-animations-enable" />
+                        </td>
+                    </tr>
+                    <tr class="settings-row">
+                        <td class="settings-label">Enable Debug Mode</td>
+                        <td class="settings-value">
+                            <input type="checkbox" id="widgets-debug-enable" />
+                        </td>
+                    </tr>
+                    <tr class="settings-row">
+                        <td class="settings-label">Simulate Events</td>
+                        <td class="settings-value">
+                            <input type="checkbox" id="widgets-simulation-enable" />
+                        </td>
+                    </tr>
+                    <tr class="settings-row">
+                        <td class="settings-label">Event Socket</td>
+                        <td class="settings-value">
+                            <input type="url" id="widgets-event-socket" placeholder="wss://tnevent.telecomnancy.net/widgets/events" />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+    <section class="container" id="widgets">
+        <h2>Widgets</h2>
+        <table id="widgets-list">
+            <thead>
+                <tr>
+                    <th>Enable</th>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input type="checkbox" id="widget1-enable" /></td>
+                    <td>Main Tchat</td>
+                    <td>Tchat</td>
+                    <td>
+                        <button class="btn-edit">Edit</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" id="widget2-enable" /></td>
+                    <td>Global Donations</td>
+                    <td>DonationPot</td>
+                    <td>
+                        <button class="btn-edit">Edit</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" id="widget3-enable" /></td>
+                    <td>Team Donations</td>
+                    <td>DonationPot</td>
+                    <td>
+                        <button class="btn-edit">Edit</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" id="widget4-enable" /></td>
+                    <td>Sponsors</td>
+                    <td>Sponsors</td>
+                    <td>
+                        <button class="btn-edit">Edit</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+    <section id="editor">
+        <h2>Editor</h2>
+        <div id="editor-container">
+            <p>Editor will be here.</p>
+            <p>It will be a WYSIWYG editor for the widgets.</p>
+            <div class="widget-wrapper">
+                <DonationPot amount={1000}></DonationPot>
+            </div>
+        </div>
+    </section>
+</BasePage>

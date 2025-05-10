@@ -1,0 +1,141 @@
+.container {
+    margin: 0 auto;
+    padding: 2rem;
+    max-width: 800px;
+
+    @media screen and (max-width: 720px) {
+        padding: 1rem;
+        max-width: none;
+    }
+}
+
+.dashboard-header {
+    margin: 0 auto;
+    padding: 2rem 0;
+    text-align: center;
+}
+
+.dashboard-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.dashboard-header p {
+    font-size: 1.25rem;
+    color: var(--text-color);
+}
+
+#editor-container {
+    z-index: 50;
+    width: 100%;
+    height: 400px;
+    background-color: white;
+    border: 2px solid var(--color-primary);
+    display: block;
+    position: relative;
+}
+
+section>h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.widget-wrapper {
+    position: absolute;
+    z-index: 60;
+    top:4rem;
+    left: 4rem;
+    color: var(--text-color);
+
+    border: 2px solid transparent;
+
+    &:hover {
+        border: 2px solid var(--color-primary);
+    }
+}
+
+.settings-row {
+    td {
+        padding: 0.5rem 1rem;
+        border: none;
+    }
+
+    .settings-label {
+        font-size: 1.1rem;
+
+        @media screen and (max-width: 720px) {
+            font-size: 1rem;
+        }
+    }
+}
+
+.settings-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.settings-group>table {
+    display: table;
+    margin: 1rem 0;
+    width: 100%;
+    border: 1px solid var(--color-primary);
+    border-radius: 0.5rem;
+    border-spacing: 0;
+    overflow: hidden;
+
+    /* Differenciate the color between two consecutive row */
+    tr:nth-child(odd) {
+        background-color: var(--table-background-odd);
+    }
+    tr:nth-child(even) {
+        background-color: var(--table-background-even);
+    }
+
+    td>* {
+        width: 100%;
+    }
+
+    td {
+        width: 50%;
+    }
+
+}
+
+#settings, #widgets {
+    --table-background-odd: #f2f2f2;
+    --table-background-even: #f9f9f9;
+}
+
+
+table#widgets-list {
+    margin: 1rem 0;
+    width: 100%;
+    border: 1px solid var(--color-primary);
+    border-radius: 0.5rem;
+    border-spacing: 0;
+    overflow: hidden;
+    text-align: center;
+
+    /* Differenciate the color between two consecutive row */
+    tbody tr:nth-child(odd) {
+        background-color: var(--table-background-odd);
+    }
+    tbody tr:nth-child(even) {
+        background-color: var(--table-background-even);
+    }
+
+    thead tr{
+        background-color: var(--color-primary);
+        color: white;
+    }
+
+    td>* {
+        width: 100%;
+    }
+}
+
+input[type="text"], input[type="number"], input[type="email"], input[type="password"], input[type="url"], input[type="tel"], input[type="search"], select, textarea {
+    width: 100%;
+}
