@@ -1,7 +1,9 @@
 ---
 import { DonationPot } from "../../components/pot/DonationPot";
+import { DragAndDrop, type DragAndDropProps } from "../../components/common/DragAndDrop";
 import BasePage from "../../layouts/BasePage.astro";
-import "./index.css";
+import "./_index.css";
+import { Tchat } from "../../components/tchat/Tchat";
 
 const title = "Dashboard - TNEvent Widgets";
 ---
@@ -135,11 +137,15 @@ const title = "Dashboard - TNEvent Widgets";
     <section id="editor">
         <h2>Editor</h2>
         <div id="editor-container">
-            <p>Editor will be here.</p>
-            <p>It will be a WYSIWYG editor for the widgets.</p>
-            <div class="widget-wrapper">
+            <DragAndDrop client:load initialPosition={{x: 1008, y: 0}} snapGrid={{x: 48, y: 48}}>
                 <DonationPot amount={1000}></DonationPot>
-            </div>
+            </DragAndDrop>
+            <DragAndDrop client:load initialPosition={{x: 1008, y: 96}} snapGrid={{x: 48, y: 48}}>
+                <DonationPot amount={1000}></DonationPot>
+            </DragAndDrop>
+            <DragAndDrop client:load initialPosition={{x: 970, y: 240}}>
+                <Tchat client:visible></Tchat>
+            </DragAndDrop>
         </div>
     </section>
 </BasePage>

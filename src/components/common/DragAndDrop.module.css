@@ -1,0 +1,25 @@
+.component {
+    position: absolute;
+    cursor: move;
+    user-select: none;
+    background-color: transparent;
+    border: 4px solid transparent;
+    border-radius: 0.5rem;
+    transform-origin: center;
+
+    transition: border-color 0.2s ease-in-out,
+                background-color 0.2s ease-in-out;
+
+    --dragging-background: rgb(from var(--color-primary) r g b / 0.2);
+
+    &:hover {
+        border-color: var(--color-primary);
+    }
+
+    &.dragging {
+        background-color: var(--dragging-background);
+        border-color: var(--color-primary);
+        cursor: grabbing;
+        z-index: 100;
+    }
+}
