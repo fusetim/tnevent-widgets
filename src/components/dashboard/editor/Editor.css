@@ -1,0 +1,13 @@
+#editor-container {
+    z-index: 50;
+    /* Max width: Minimum between 1280px and 95% of the viewport width */
+    max-width: min(1280px, 95vw);
+    max-height: 80vh;
+    margin: 0 auto 4rem auto;
+    background-color: white;
+    border: 2px solid var(--color-primary);
+    display: block;
+    position: relative;
+
+    overflow: hidden;
+}
